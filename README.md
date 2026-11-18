@@ -1,8 +1,8 @@
-# Continuity Ledger
+# ledgarr
 
 **Inspect. Compare. Reconcile.**
 
-Continuity Ledger is a planned desktop application for inspecting, comparing, auditing, and managing video files and their internal tracks across a media library.
+ledgarr is a planned desktop application for inspecting, comparing, auditing, and managing video files and their internal tracks across a media library.
 
 It is intended for people maintaining sizeable Jellyfin, Plex, Emby, or other media collections who want a clear, spreadsheet-like view of their files and a safe way to make consistent track-level changes.
 
@@ -30,7 +30,7 @@ The initial scope is deliberately focused on track and container management:
 - Reorder, remove, add, and extract tracks.
 - Rename files using configurable templates.
 
-Video and audio stream properties are not edited, and Continuity Ledger is not intended to be a transcoder.
+Video and audio stream properties are not edited, and ledgarr is not intended to be a transcoder.
 
 Stream-copy remuxing may be used when a container must be rewritten to add, remove, or reorder tracks. The underlying audio, video, and subtitle streams must not be re-encoded as part of these operations.
 
@@ -75,4 +75,4 @@ Implementation details, tool-version requirements, packaging choices, provider a
 
 ## License
 
-Continuity Ledger is intended to be released under the **MIT License**. See [LICENSE](LICENSE) for details.
+ledgarr is intended to be released under the **MIT License**. See [LICENSE](LICENSE) for details.
