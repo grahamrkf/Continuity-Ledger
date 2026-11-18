@@ -1,4 +1,4 @@
-# Continuity Ledger
+# ledgarr
 ## Technical Design Document (TDD)
 
 **Document version:** 1.0  
