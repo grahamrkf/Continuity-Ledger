@@ -1,4 +1,4 @@
-# Continuity Ledger
+# ledgarr
 ## Software Design Document (SDD)
 
 **Document version:** 1.0  
@@ -14,7 +14,7 @@
 
 ### 1.1 Purpose
 
-Continuity Ledger is a desktop application for inspecting, comparing, auditing, and managing video files and their internal tracks.
+ledgarr is a desktop application for inspecting, comparing, auditing, and managing video files and their internal tracks.
 
 The application is intended to make it easy to examine large media collections, identify inconsistencies between files, and perform batch operations without requiring users to work with command-line tools.
 
@@ -30,7 +30,7 @@ Its primary purpose is to provide a unified interface for:
 - Identifying television episodes and movies through external metadata providers.
 - Exporting media inventories and comparison results.
 
-Continuity Ledger is intended to be a media inspection and management tool, not a media transcoding application.
+ledgarr is intended to be a media inspection and management tool, not a media transcoding application.
 
 ### 1.2 Design Philosophy
 
