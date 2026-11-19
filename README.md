@@ -1,78 +1,25 @@
 # Continuity Ledger
 
-**Inspect. Compare. Reconcile.**
+**A focused desktop tool for comparing video files and managing their tracks.**
 
-Continuity Ledger is a planned desktop application for inspecting, comparing, auditing, and managing video files and their internal tracks across a media library.
-
-It is intended for people maintaining sizeable Jellyfin, Plex, Emby, or other media collections who want a clear, spreadsheet-like view of their files and a safe way to make consistent track-level changes.
-
-The project is currently in the **planning / draft specification stage**. These documents describe the proposed design; they do not represent a working release.
+Continuity Ledger helps users understand what differs between multiple versions of a movie or episode: video streams, audio languages and formats, subtitle tracks, flags, metadata, and container details. It is designed for direct, folder-based use without requiring Jellyfin, Plex, Emby, Sonarr, Radarr, Docker, or a remote service.
 
 ## Highlights
 
-- **Collection-wide comparison:** View one file per row, with columns for container, resolution, video codec, bitrate, frame rate, HDR, and other technical properties.
-- **Aligned audio and subtitle tracks:** Equivalent tracks are grouped into consistent columns across files. Missing tracks remain visibly empty instead of shifting later tracks out of alignment.
-- **Difference-focused inspection:** Identify variations in codecs, languages, channel layouts, track flags, and missing tracks.
-- **Track management:** Plan changes to track language, title, default/forced status, commentary and hearing-impaired flags, track order, extraction, addition, and removal.
-- **Safe staged changes:** No media file is modified while browsing or editing. Changes are queued, reviewed, and confirmed before processing.
-- **Conservative file handling:** Prefer lossless stream-copy/remux operations. Never silently transcode media to complete a track-management task.
-- **Flexible renaming:** Build filenames from configurable templates, with optional metadata-provider-assisted movie and television identification.
-- **Session persistence and exports:** Save inspection sessions and export detailed collection information to CSV, XLSX, and JSON.
-- **Broad inspection, capability-aware editing:** Inspect as many media formats as supported by the available tools; editing options are enabled only when the container and processing backend can safely support them.
+- Open folders, individual files, or drag and drop multiple video files.
+- Extract detailed stream and container metadata using FFprobe, with optional MediaInfo enrichment.
+- Compare files in a table, aligning equivalent audio and subtitle tracks even when codecs differ.
+- Identify missing tracks, differing languages, channel layouts, codecs, flags, and other properties.
+- Edit track language/name/default/forced/commentary/hearing-impaired flags and ordering where the container and tools support it.
+- Add, extract, or remove tracks; optionally generate an additional compatible audio track through a separately reviewed processing workflow.
+- Review pending operations before execution, preserve originals until validation succeeds, and keep an operation history.
+- Save comparison sessions and export reports.
+- Offer a CLI for scripted scans, comparisons, and reports.
 
-## Planned editing scope
+## What it is not
 
-The initial scope is deliberately focused on track and container management:
+Continuity Ledger is not a media-server replacement, library manager, transcoding farm, subtitle editor, or general-purpose video converter. It does not need a media server or *Arr integration to perform its core job.
 
-- Change track language and track name.
-- Set default and forced flags.
-- Set commentary and hearing-impaired flags.
-- Reorder, remove, add, and extract tracks.
-- Rename files using configurable templates.
+## Proposed stack
 
-Video and audio stream properties are not edited, and Continuity Ledger is not intended to be a transcoder.
-
-Stream-copy remuxing may be used when a container must be rewritten to add, remove, or reorder tracks. The underlying audio, video, and subtitle streams must not be re-encoded as part of these operations.
-
-Subtitle text editing, synchronization, translation, arbitrary audio conversion, and video conversion are outside the initial scope.
-
-## Proposed technology
-
-- **Python** — application and business logic
-- **PySide6 / Qt** — cross-platform desktop interface
-- **MediaInfo and FFprobe** — media inspection
-- **MKVToolNix and FFmpeg** — supported container and stream operations
-- **SQLite** — sessions and local application data
-- **openpyxl** — XLSX export
-- **pytest** — automated testing
-
-Linux is the primary development and initial testing platform. Windows support is a requirement, while macOS support is intended to be straightforward to add.
-
-## Repository layout
-
-```text
-continuity-ledger/
-├── README.md
-├── LICENSE
-├── .gitignore
-└── docs/
-    ├── SDD.md
-    └── TDD.md
-```
-
-## Documentation
-
-- [Software Design Document](docs/SDD.md)
-- [Technical Design Document](docs/TDD.md)
-
-## Project status
-
-**Draft / pre-implementation.**
-
-The Software Design Document (SDD) and Technical Design Document (TDD) establish the intended product behavior and proposed architecture.
-
-Implementation details, tool-version requirements, packaging choices, provider access terms, and format-specific operation support will be validated during development.
-
-## License
-
-Continuity Ledger is intended to be released under the **MIT License**. See [LICENSE](LICENSE) for details.
+Python core, PySide6 desktop GUI, Typer CLI, SQLite session store, FFprobe, MKVToolNix, and FFmpeg. See [Software Design](SOFTWARE_DESIGN.md) and [Technical Design](TECHNICAL_DESIGN.md).
